@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Acromegaly Detection</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css" media="screen and (max-width: 1050px)">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo"><img src="images/logo2.png" alt=""></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#prevention">PREVENTION</a></li>  
+                <li><a href="#treatment">TREATMENT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav center" id="mobile-demo">
+        <li><a href="#prevention">PREVENTION</a></li>  
+        <li><a href="#treatment">TREATMENT</a></li>
+    </ul>
+
+    <div class="predict">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h2>Automatic Acromegaly Detection</h2>
+                    <img id="image" src="{{url_for('static', filename=filename)}}" width="448" height="448"/>
+					<br></br>
+					<h6 id="pra">Probability of Acromegaly: {{probability_of_acromegaly}}</h6>
+                    <h6 id="npra">Probability of No Acromegaly: {{probability_of_no_acromegaly}}</h6>
+					<br></br>
+					<h5>The performance of the ResNet-34-based DCNN model as epoch increases.</h5>
+					<img id="graph-image" src="" width="500" height="500" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+    	<h6 id="image_path" style="display: none;">{{image_path}}</h6>
+	<div>
+
+	<div>
+	</div>
+
+    <div class="prevention">
+    <div class="container row scrollspy" id="prevention">
+        <h3 class="center">Preventions</h3>
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header"><i class="fas fa-hand-holding-heart"></i>Healthy lifestyle</div>
+                <div class="collapsible-body">
+                    <p>Adopting a few lifestyle changes can improve your general health and reduce your risk of developing Acromegaly. These include:</p>
+                    <ol>
+                        <li>eating a healthy, balanced diet – in particular, try to cut down on salt, fat and sugar</li>
+                        <li>losing weight if you're overweight – you should aim for a BMI of 18.5-24.9; use the BMI calculator to work out your BMI</li>
+                        <li>exercising regularly – aim to do at least 150 minutes of moderate-intensity activity, such as walking or cycling, a week; doing 10,000 steps a day can be a good way to reach this target</li>
+                        <li>stopping smoking if you smoke</li>
+                        <li>not exceeding the recommended alcohol limits – men and women are advised not to regularly drink more than 14 alcohol units a week</li>
+                    </ol>
+                    
+                </div>
+            </li>
+            <li>
+                
+            </li>
+            <li>
+                
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="fas fa-user-md"></i>Regular screening</div>
+                <div class="collapsible-body">
+                   <p>Even if you think you are normal, it's still important to attend self screening, as this can detect signs of a problem before you notice anything is wrong.</p>
+                   <p>Early detection of Acromegaly increases the chances of treatment being effective and stopping it getting worse.</p>
+                   
+                   <ol>
+                       <li>gradually worsening swelliing</li>
+                       <li>sudden vision of movement</li>
+                       <li>increase in heart beat</li>
+                       <li>hand pain or redness</li>
+                   </ol>
+                   <p>These symptoms don't necessarily mean you have acromegaly, but it's important to get them checked out straight away.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+
+    <div class="treatment">
+        <div class="container">
+            <div class="row row scrollspy" id="treatment">
+                <h3 class="center">How is Acromegaly treated?</h3>
+                <div class="col s17 l4">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            
+                        </div>
+                        <script type="text/javascript">
+                        	let pra = document.getElementById("pra").innerHTML.substring(27)
+                        	let npra = document.getElementById("npra").innerHTML.substring(30)
+                        	if(document.getElementById("image").src.includes('No'))
+                        	{
+                        		document.getElementById("pra").innerHTML = document.getElementById("pra").innerHTML.replace(pra, npra)
+                        		document.getElementById("npra").innerHTML = document.getElementById("npra").innerHTML.replace(npra, pra)
+                        	}
+                        </script>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Management<i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Management<i class="material-icons right">close</i></span>
+                            <p>Keeping blood sugar levels, blood pressure and cholesterol levels under control can prevent thyroid and pitutary gland related problems.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s17 l4">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                           
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Injections and laser<i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Injections and laser<i class="material-icons right">close</i></span>
+                            <p>If detected early, injections and laser treatment can stop the disease from progressing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s17 l4">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Surgery<i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Surgery<i class="material-icons right">close</i></span>
+                            <p>In the case of advanced or chronic acromegaly, surgery may be needed to remove the pituitary tumor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="footer-copyright">
+            <div class="container center">
+                © 2021 Copyright
+            </div>
+        </div>
+    </div>
+	<div class="container center">
+	<p>Design and Developed by Pruthvik & team</p>
+	</div>
+
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.parallax').parallax();
+        $('.collapsible').collapsible();
+    });
+</script>
+<script type="text/javascript">
+	document.onload = function() {
+		let image_path = document.getElementById("image_path").innerHTML
+		let absolute_path = "C:/Users/suhas/OneDrive/Desktop/Acromegaly/PredictionPool/".concat(image_path)
+		document.getElementById("image").setAttribute("src",image_path)
+	}
+</script>
+</body>
+</html>
