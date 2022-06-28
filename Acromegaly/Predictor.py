@@ -152,7 +152,25 @@ def predict():
         probabilities = probabilities.tolist()
         probability_of_acromegaly = round(probabilities[0][0], 4)
         probability_of_no_acromegaly = round(1 - probability_of_acromegaly, 4)
-        return render_template('Acromegaly.html', filename = filename, probability_of_acromegaly = str(probability_of_acromegaly), probability_of_no_acromegaly = str(probability_of_no_acromegaly))
+
+        reader = open("Best_Values.txt", "r")
+        best_sensitivity = reader.readline()
+        best_specificity = reader.readline()
+        best_ppv = reader.readline()
+        best_npv = reader.readline()
+        best_f1_score = reader.readline()
+        best_accuracy = reader.readline()
+
+        return render_template('Acromegaly.html', 
+        filename = filename, 
+        probability_of_acromegaly = str(probability_of_acromegaly), 
+        probability_of_no_acromegaly = str(probability_of_no_acromegaly),
+        best_sensitivity = str(best_sensitivity),
+        best_specificity = str(best_specificity),
+        best_ppv = str(best_ppv),
+        best_npv = str(best_npv),
+        best_f1_score = str(best_f1_score),
+        best_accuracy = str(best_accuracy))
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug=True)

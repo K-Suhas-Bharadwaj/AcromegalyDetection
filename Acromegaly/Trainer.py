@@ -227,6 +227,11 @@ def train_and_test():
     ResNet_34 = ResNet34()
     optimizer = optim.SGD(ResNet_34.parameters(), lr = 0.05)
 
+    best_sensitivity = 0
+    best_specificity = 0
+    best_ppv = 0
+    best_npv = 0
+    best_f1_score = 0
     best_accuracy_reached = 0.5
     
     F1_scores = list()
@@ -335,6 +340,11 @@ def train_and_test():
                         sensitivity_increase = 0
 
                 if result['accuracy'] > best_accuracy_reached:
+                    best_sensitivity = result['sensitivity']
+                    best_specificity = result['specificity']
+                    best_npv = result['ppv']
+                    best_ppv = result['npv']
+                    best_f1_score = result['f1_score']
                     best_accuracy_reached = result['accuracy']
                     torch.save(ResNet_34.state_dict(), save_path + 'BestModel.pkl')
                     print("SAVED BEST MODEL")
@@ -378,6 +388,12 @@ def train_and_test():
             plt.xticks(range(1, 2*epoch))
             plt.savefig("C:/Users/suhas/OneDrive/Desktop/Acromegaly/static/ScoresPlot.jpeg")
             plt.show()
+
+            writer = open("Best_Values.txt", "w")
+            best_values = best_sensitivity + "\n" + best_specificity + "\n" + best_ppv + "\n" + best_npv + "\n" + best_f1_score + "\n" + best_accuracy_reached
+            writer.write(best_values)
+            writer.close()
+
             break
             
 if __name__== "__main__":
