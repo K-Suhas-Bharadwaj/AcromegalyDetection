@@ -40,6 +40,40 @@
                     <h2>Automatic Acromegaly Detection</h2>
                     <img id="image" src="{{url_for('static', filename=filename)}}" width="448" height="448"/>
 					<br></br>
+                    <div>
+                        <h3> Performance Metrics </h3>
+                        <table>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Value</th>
+                            </tr>
+                            <tr>
+                                <td>Sensitivity</td>
+                                <td>{{best_sensitivity}}</td>
+                            </tr>
+                            <tr>
+                                <td>Specificity</td>
+                                <td>{{best_specficity}}</td>
+                            </tr>
+                            <tr>
+                                <td>PPV</td>
+                                <td>{{best_ppv}}</td>
+                            </tr>
+                            <tr>
+                                <td>NPV</td>
+                                <td>{{best_npv}}</td>
+                            </tr>
+                            <tr>
+                                <td>F1 Score</td>
+                                <td>{{best_f1_score}}</td>
+                            </tr>
+                            <tr>
+                                <td>Accuracy</td>
+                                <td>{{best_accuracy}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br></br>                
 					<h6 id="pra">Probability of Acromegaly: {{probability_of_acromegaly}}</h6>
                     <h6 id="npra">Probability of No Acromegaly: {{probability_of_no_acromegaly}}</h6>
 					<br></br>
@@ -54,40 +88,7 @@
     	<h6 id="image_path" style="display: none;">{{image_path}}</h6>
 	<div>
 
-	<div>
-        <h3> Performance Metrics </h3>
-        <table>
-            <tr>
-                <th>Metric</th>
-                <th>Value</th>
-            </tr>
-            <tr>
-                <td>Sensitivity</td>
-                <td>{{best_sensitivity}}</td>
-            </tr>
-            <tr>
-                <td>Specificity</td>
-                <td>{{best_specficity}}</td>
-            </tr>
-            <tr>
-                <td>PPV</td>
-                <td>{{best_ppv}}</td>
-            </tr>
-            <tr>
-                <td>NPV</td>
-                <td>{{best_npv}}</td>
-            </tr>
-            <tr>
-                <td>F1 Score</td>
-                <td>{{best_f1_score}}</td>
-            </tr>
-            <tr>
-                <td>Accuracy</td>
-                <td>{{best_accuracy}}</td>
-            </tr>
-        </table>
-	</div>
-
+	
     <div class="prevention">
     <div class="container row scrollspy" id="prevention">
         <h3 class="center">Preventions</h3>
